@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  published_year: 1
+  available_copies: 1
+  author: one
+
+two:
+  title: MyString
+  published_year: 1
+  available_copies: 1
+  author: two
