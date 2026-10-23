@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_22_101523) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_23_090349) do
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -21,7 +21,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_22_101523) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
-    t.integer "published_year"
+    t.date "published_year"
     t.integer "available_copies"
     t.integer "author_id", null: false
     t.datetime "created_at", null: false
@@ -30,5 +30,41 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_22_101523) do
     t.index ["author_id"], name: "index_books_on_author_id"
   end
 
+  create_table "borrowings", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.integer "book_id", null: false
+    t.date "borrow_date"
+    t.date "due_date"
+    t.date "return_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_borrowings_on_book_id"
+    t.index ["member_id"], name: "index_borrowings_on_member_id"
+  end
+
+  create_table "members", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "type"
+    t.integer "refered_by_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "member_id", null: false
+    t.string "reviewable_type", null: false
+    t.integer "reviewable_id", null: false
+    t.text "text"
+    t.integer "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_reviews_on_member_id"
+    t.index ["reviewable_type", "reviewable_id"], name: "index_reviews_on_reviewable"
+  end
+
   add_foreign_key "books", "authors"
+  add_foreign_key "borrowings", "books"
+  add_foreign_key "borrowings", "members"
+  add_foreign_key "reviews", "members"
 end
