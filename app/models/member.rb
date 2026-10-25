@@ -8,7 +8,7 @@ class Member < ApplicationRecord
     validates :name, presence: true
     validates :email,uniqueness: true,format: {with:URI::MailTo::EMAIL_REGEXP}
 
-    private
+    public
     def borrowing_limit
         if(type == "Student")
             return 3

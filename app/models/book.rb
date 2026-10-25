@@ -6,23 +6,8 @@ class Book < ApplicationRecord
 
   validates  :title, presence: true
   validates  :isbn, presence: true, uniqueness: true
-  validates :available_copies, presence: true, numericality: { greater_than_or_equal_to: 0 }
-  validate :published_year_can_not_be_in_the_future
-
-
-
-
-
-private
-
-  def published_year_can_not_be_in_the_future
- 
-     if published_year.present? && published_year >Time.zone.now.year
-      errors.add(:published_year,"published year can't be in future")
-
-    end
-  end
-
-
+  validates :available_copies, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0 }
+  validates :published_year, numericality: {only_integer: true, less_than_or_equal_to: Date.current.year }
+  
+  
 end
- 
