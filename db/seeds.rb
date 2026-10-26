@@ -216,7 +216,7 @@ Review.find_or_create_by!(
   reviewable: Book.find_by!(isbn: "ISBN005")
 ) do |review|
   review.rating = 5
-  review.comment = "A very interesting book."
+  review.text = "A very interesting book."
 end
 
 Review.find_or_create_by!(
@@ -224,7 +224,7 @@ Review.find_or_create_by!(
   reviewable: Book.find_by!(isbn: "ISBN466")
 ) do |review|
   review.rating = 4
-  review.comment = "An inspiring book."
+  review.text = "An inspiring book."
 end
 
 Review.find_or_create_by!(
@@ -232,7 +232,7 @@ Review.find_or_create_by!(
   reviewable: Book.find_by!(isbn: "ISBN288")
 ) do |review|
   review.rating = 5
-  review.comment = "Very informative and motivating."
+  review.text = "Very informative and motivating."
 end
 
 Review.find_or_create_by!(
@@ -240,7 +240,7 @@ Review.find_or_create_by!(
   reviewable: Author.find_by!(email: "rk@gmail.com")
 ) do |review|
   review.rating = 4
-  review.comment = "A wonderful storyteller."
+  review.text = "A wonderful storyteller."
 end
 
 Review.find_or_create_by!(
@@ -248,7 +248,7 @@ Review.find_or_create_by!(
   reviewable: Author.find_by!(email: "apj@gmail.com")
 ) do |review|
   review.rating = 5
-  review.comment = "An inspiring writer."
+  review.text = "An inspiring writer."
 end
 
 

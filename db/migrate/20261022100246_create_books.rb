@@ -5,7 +5,7 @@ class CreateBooks < ActiveRecord::Migration[8.1]
       t.date :published_year
       t.integer :available_copies
       t.references :author, null: false, foreign_key: true
-
+      t.string :isbn
       t.timestamps
     end
   end

@@ -26,7 +26,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_23_090349) do
     t.integer "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "isbn"
     t.index ["author_id"], name: "index_books_on_author_id"
   end
 
